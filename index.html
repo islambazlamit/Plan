@@ -11,7 +11,7 @@
   
   <table id="secureTable">
     <tr> 
-      <th> -------------------- 12A1 -------------------- </th>
+      <th> ----------------------------------------  12A1  ---------------------------------------- </th>
       <tr>
     <tr>
       <th>Subject -  المادة</th>
@@ -21,8 +21,15 @@
        <th>Thursday - الخميس</th>
        <th>Friday - الجمعة</th>
     </tr>
-        <tr>
+      <tr>
       <th> Islamic Education - التربية الإسلامية</th>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+    </tr>
+    <tr>
       <th> Homework - الواجبات</th>
       <td><input type="text" maxlength="50" class="editable" /></td>
       <td><input type="text" maxlength="50" class="editable" /></td>
@@ -31,7 +38,14 @@
       <td><input type="text" maxlength="50" class="editable" /></td>
     </tr>
     <tr>
-      <th> Arabic - اللغة العربية</th>
+      <th> Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+    </tr>
+    <tr>
       <th> Homework - الواجبات</th>
       <td><input type="text" maxlength="50" class="editable" /></td>
       <td><input type="text" maxlength="50" class="editable" /></td>
@@ -41,6 +55,13 @@
     </tr>
     <tr>
       <th> English - اللغة الإنجليزية</th>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+    </tr>
+    <tr>
       <th> Homework - الواجبات</th>
       <td><input type="text" maxlength="50" class="editable" /></td>
       <td><input type="text" maxlength="50" class="editable" /></td>
@@ -48,9 +69,15 @@
       <td><input type="text" maxlength="50" class="editable" /></td>
       <td><input type="text" maxlength="50" class="editable" /></td>
     </tr>
-
     <tr>
       <th> Social Studies - الدراسات الإجتماعية</th>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+    </tr>
+    <tr>
       <th> Homework - الواجبات</th>
       <td><input type="text" maxlength="50" class="editable" /></td>
       <td><input type="text" maxlength="50" class="editable" /></td>
@@ -60,11 +87,67 @@
     </tr>
   </table>
 
-  <br />
-  <button onclick="exportPDF()">Export as PDF</button>
-  <button onclick="toggleAdmin()">Toggle Admin Mode</button>
+  
+<br />
+  <button onclick="saveData()">💾 Save Data</button>
+  <button onclick="downloadData()">⬇️ Download Last Save</button>
+  <button onclick="exportPDF()">🧾 Export as PDF</button>
+  <button onclick="toggleAdmin()">🛠️ Toggle Admin Mode</button>
 
-  <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    // Prevent copy-paste
+    document.querySelectorAll('.editable').forEach(input => {
+      input.addEventListener('paste', e => e.preventDefault());
+      input.addEventListener('copy', e => e.preventDefault());
+      input.addEventListener('cut', e => e.preventDefault());
+    });
+
+    // Export to PDF
+    function exportPDF() {
+      const element = document.getElementById("secureTable");
+      html2pdf().from(element).save("weekly_plan.pdf");
+    }
+
+    // Admin mode
+    let isAdmin = false;
+    function toggleAdmin() {
+      const password = prompt("Enter admin password:");
+      if (password === "admin123") {
+        isAdmin = !isAdmin;
+        document.getElementById("secureTable").classList.toggle("admin-mode");
+        alert("Admin mode " + (isAdmin ? "enabled" : "disabled"));
+      } else {
+        alert("Incorrect password.");
+      }
+    }
+
+    // Save data to JSON and store in memory
+    let savedData = null;
+
+    function saveData() {
+      const inputs = document.querySelectorAll('#secureTable input');
+      const data = Array.from(inputs).map(input => input.value);
+      savedData = data;
+      const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "weekly_plan_data.json";
+      link.click();
+    }
+
+    // Download last saved data again
+    function downloadData() {
+      if (!savedData) {
+        alert("No data saved in memory yet.");
+        return;
+      }
+      const blob = new Blob([JSON.stringify(savedData)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "weekly_plan_data.json";
+      link.click();
+    }
+  </script>
 </body>
 </html>
