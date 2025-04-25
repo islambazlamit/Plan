@@ -3,24 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Secure Table Page</title>
+  <title>Multi-Page Table</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Fill in the Table</h2>
-  
-  <table id="secureTable">
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Comment</th>
-    </tr>
-    <tr>
-      <td><input type="text" maxlength="10" class="editable" /></td>
-      <td><input type="text" maxlength="2" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-    </tr>
-  </table>
+  <h2>Fill in the Tables</h2>
+
+  <!-- Page 1 -->
+  <div class="page">
+    <p><strong>Date:</strong> <input type="date" /></p>
+    <table class="secureTable">
+      <thead>
+        <tr>
+          <th>Col 1</th><th>Col 2</th><th>Col 3</th><th>Col 4</th><th>Col 5</th><th>Col 6</th><th>Col 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 10 rows -->
+        ${[...Array(10)].map(() => `
+        <tr>
+          ${[...Array(7)].map(() => `<td><input type="text" maxlength="20" class="editable" /></td>`).join('')}
+        </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
+
+  <hr />
+
+  <!-- Page 2 -->
+  <div class="page">
+    <p><strong>Date:</strong> <input type="date" /></p>
+    <table class="secureTable">
+      <thead>
+        <tr>
+          <th>Col 1</th><th>Col 2</th><th>Col 3</th><th>Col 4</th><th>Col 5</th><th>Col 6</th><th>Col 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 10 rows -->
+        ${[...Array(10)].map(() => `
+        <tr>
+          ${[...Array(7)].map(() => `<td><input type="text" maxlength="20" class="editable" /></td>`).join('')}
+        </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
 
   <br />
   <button onclick="exportPDF()">Export as PDF</button>
