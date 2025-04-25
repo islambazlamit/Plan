@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Table Page</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Fill in the Table</h2>
+  
+  <table id="secureTable">
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Comment</th>
+    </tr>
+    <tr>
+      <td><input type="text" maxlength="10" class="editable" /></td>
+      <td><input type="text" maxlength="2" class="editable" /></td>
+      <td><input type="text" maxlength="50" class="editable" /></td>
+    </tr>
+  </table>
+
+  <br />
+  <button onclick="exportPDF()">Export as PDF</button>
+  <button onclick="toggleAdmin()">Toggle Admin Mode</button>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
