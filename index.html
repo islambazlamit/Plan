@@ -2,137 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
-  <title>Secure Table Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekly Plan - 12A1</title>
   <style>
     body {
-      max-width: 1200px; /* or any larger value you prefer */
-      margin: 0 auto; /* centers the content */
+      max-width: 2000px;
+      margin: 0 auto;
       padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    #secureTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    #secureTable th, #secureTable td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    
+    #secureTable th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    #secureTable input {
+      width: 95%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    button {
+      padding: 10px 15px;
+      margin: 0 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .admin-mode {
+      background-color: #fffde7;
+    }
+    
+    @media print {
+      button {
+        display: none;
+      }
     }
   </style>
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-  <h2>Weekly Plan</h2>
+  <h2>Weekly Plan - 12A1</h2>
   
   <table id="secureTable">
     <tr> 
-      <th> ----------------------------------------  12A1  ---------------------------------------- </th>
-      <tr>
-    <tr>
-      <th>Subject -  المادة</th>
-      <th>Monday -  الإثنين</th>
-       <th>Tuseday - الثلاثاء</th>
-       <th>Wednesday - الأربعاء</th>
-       <th>Thursday - الخميس</th>
-       <th>Friday - الجمعة</th>
-    </tr>
-      <tr>
-      <th> Islamic Education - التربية الإسلامية</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th colspan="6">Weekly Plan - 12A1</th>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Subject - المادة</th>
+      <th>Monday - الإثنين</th>
+      <th>Tuesday - الثلاثاء</th>
+      <th>Wednesday - الأربعاء</th>
+      <th>Thursday - الخميس</th>
+      <th>Friday - الجمعة</th>
     </tr>
     <tr>
-      <th> Arabic - العربية</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Islamic Education - التربية الإسلامية</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_fri" /></td>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="islamic_hw_fri" /></td>
     </tr>
     <tr>
-      <th> English - اللغة الإنجليزية</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Arabic - العربية</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_fri" /></td>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="arabic_hw_fri" /></td>
     </tr>
     <tr>
-      <th> Social Studies - الدراسات الإجتماعية</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>English - اللغة الإنجليزية</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_fri" /></td>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-    </tr>
-          <th> Math - رياضيات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="english_hw_fri" /></td>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-    </tr>
-      <th> Physics - فيزياء</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Social Studies - الدراسات الإجتماعية</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_fri" /></td>
     </tr>
     <tr>
-      <th> Homework - الواجبات</th>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
-      <td><input type="text" maxlength="50" class="editable" /></td>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="social_hw_fri" /></td>
+    </tr>
+    <tr>
+      <th>Math - رياضيات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_fri" /></td>
+    </tr>
+    <tr>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="math_hw_fri" /></td>
+    </tr>
+    <tr>
+      <th>Physics - فيزياء</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_fri" /></td>
+    </tr>
+    <tr>
+      <th>Homework - الواجبات</th>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_hw_mon" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_hw_tue" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_hw_wed" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_hw_thu" /></td>
+      <td><input type="text" maxlength="50" class="editable" data-id="physics_hw_fri" /></td>
     </tr>
   </table>
 
-  
-<br />
-  <button onclick="saveData()">💾 Save Data</button>
-  <button onclick="downloadData()">⬇️ Download Last Save</button>
-  <button onclick="exportPDF()">🧾 Export as PDF</button>
-  <button onclick="toggleAdmin()">🛠️ Toggle Admin Mode</button>
+  <div class="button-container">
+    <button onclick="saveData()">💾 Save Data</button>
+    <button onclick="downloadData()">⬇️ Download Last Save</button>
+    <button onclick="exportPDF()">🧾 Export as PDF</button>
+    <button onclick="clearData()">🗑️ Clear All Data</button>
+    <button onclick="toggleAdmin()">🛠️ Toggle Admin Mode</button>
+  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
+    // Load saved data when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      loadData();
+      
+      // Auto-save when inputs change
+      document.querySelectorAll('.editable').forEach(input => {
+        input.addEventListener('input', function() {
+          saveToLocalStorage();
+        });
+      });
+    });
+
     // Prevent copy-paste
     document.querySelectorAll('.editable').forEach(input => {
       input.addEventListener('paste', e => e.preventDefault());
@@ -140,10 +214,40 @@
       input.addEventListener('cut', e => e.preventDefault());
     });
 
-    // Export to PDF
+    // Save data to localStorage
+    function saveToLocalStorage() {
+      const data = {};
+      document.querySelectorAll('.editable').forEach(input => {
+        data[input.dataset.id] = input.value;
+      });
+      localStorage.setItem('weeklyPlanData', JSON.stringify(data));
+    }
+
+    // Load data from localStorage
+    function loadData() {
+      const savedData = localStorage.getItem('weeklyPlanData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        document.querySelectorAll('.editable').forEach(input => {
+          if (data[input.dataset.id]) {
+            input.value = data[input.dataset.id];
+          }
+        });
+      }
+    }
+
+    // Export to PDF (A4 Landscape)
     function exportPDF() {
       const element = document.getElementById("secureTable");
-      html2pdf().from(element).save("weekly_plan.pdf");
+      const opt = {
+        margin: 10,
+        filename: 'weekly_plan_12A1.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+      };
+      
+      html2pdf().set(opt).from(element).save();
     }
 
     // Admin mode
@@ -159,31 +263,47 @@
       }
     }
 
-    // Save data to JSON and store in memory
-    let savedData = null;
-
+    // Save data to JSON file
     function saveData() {
-      const inputs = document.querySelectorAll('#secureTable input');
-      const data = Array.from(inputs).map(input => input.value);
-      savedData = data;
-      const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+      const data = {};
+      document.querySelectorAll('.editable').forEach(input => {
+        data[input.dataset.id] = input.value;
+      });
+      
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "weekly_plan_data.json";
+      link.click();
+      
+      saveToLocalStorage();
+      alert("Data saved successfully!");
+    }
+
+    // Download last saved data again
+    function downloadData() {
+      const savedData = localStorage.getItem('weeklyPlanData');
+      if (!savedData) {
+        alert("No data saved yet.");
+        return;
+      }
+      
+      const blob = new Blob([savedData], { type: "application/json" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = "weekly_plan_data.json";
       link.click();
     }
 
-    // Download last saved data again
-    function downloadData() {
-      if (!savedData) {
-        alert("No data saved in memory yet.");
-        return;
+    // Clear all data
+    function clearData() {
+      if (confirm("Are you sure you want to clear all data? This cannot be undone.")) {
+        document.querySelectorAll('.editable').forEach(input => {
+          input.value = '';
+        });
+        localStorage.removeItem('weeklyPlanData');
+        alert("All data has been cleared.");
       }
-      const blob = new Blob([JSON.stringify(savedData)], { type: "application/json" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "weekly_plan_data.json";
-      link.click();
     }
   </script>
 </body>
